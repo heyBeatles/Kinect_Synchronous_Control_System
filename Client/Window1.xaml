@@ -1,0 +1,49 @@
+﻿<Window x:Class="Microsoft.Samples.Kinect.DepthBasics.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Microsoft.Samples.Kinect.DepthBasics"
+        mc:Ignorable="d"
+        Title="设置拍摄区域" Height="376.063" Width="286.867" Background="#FFF0F0F0">
+    <Grid>
+        <Label Content="基准摄像头X轴范围：" HorizontalAlignment="Left" Margin="16,15,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBX1" HorizontalAlignment="Left" Height="20" Margin="141,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,15,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBX2" HorizontalAlignment="Left" Height="20" Margin="211,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="基准摄像头Y轴范围：" HorizontalAlignment="Left" Margin="16,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBY1" HorizontalAlignment="Left" Height="20" Margin="141,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBY2" HorizontalAlignment="Left" Height="20" Margin="211,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="左面摄像头X轴范围：" HorizontalAlignment="Left" Margin="16,105,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLX1" HorizontalAlignment="Left" Height="20" Margin="141,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,105,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLX2" HorizontalAlignment="Left" Height="20" Margin="211,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="左面摄像头Y轴范围：" HorizontalAlignment="Left" Margin="16,135,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLY1" HorizontalAlignment="Left" Height="20" Margin="141,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,135,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLY2" HorizontalAlignment="Left" Height="20" Margin="211,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="左面摄像头Z轴范围：" HorizontalAlignment="Left" Margin="16,165,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLZ1" HorizontalAlignment="Left" Height="20" Margin="141,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,165,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLZ2" HorizontalAlignment="Left" Height="20" Margin="211,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="右面摄像头X轴范围：" HorizontalAlignment="Left" Margin="16,195,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRX1" HorizontalAlignment="Left" Height="20" Margin="141,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,195,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRX2" HorizontalAlignment="Left" Height="20" Margin="211,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="基准摄像头Z轴范围：" HorizontalAlignment="Left" Margin="16,75,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBZ1" HorizontalAlignment="Left" Height="20" Margin="141,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,75,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBZ2" HorizontalAlignment="Left" Height="20" Margin="211,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="右面摄像头Y轴范围：" HorizontalAlignment="Left" Margin="16,225,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRY1" HorizontalAlignment="Left" Height="20" Margin="141,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,225,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRY2" HorizontalAlignment="Left" Height="20" Margin="211,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="右面摄像头Z轴范围：" HorizontalAlignment="Left" Margin="16,255,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRZ1" HorizontalAlignment="Left" Height="20" Margin="141,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Label Content="—" HorizontalAlignment="Left" Margin="183,255,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRZ2" HorizontalAlignment="Left" Height="20" Margin="211,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
+        <Button Name ="save" Content="保存范围" HorizontalAlignment="Left" Margin="104,294,0,0" VerticalAlignment="Top" Width="60" Height="30" Click="save_Click" />
+
+    </Grid>
+</Window>

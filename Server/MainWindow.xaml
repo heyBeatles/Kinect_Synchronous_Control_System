@@ -1,0 +1,62 @@
+﻿<Window x:Class="Microsoft.Samples.Kinect.ColorBasics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Kinect三维点云校准" 
+        Height="806.771" Width="692.495" 
+        Background="#FFF0F0F0" Loaded="Window_Loaded">
+    <Grid Margin="0,0,3.6,-0.4" ScrollViewer.HorizontalScrollBarVisibility="Visible" Height="642" VerticalAlignment="Top" HorizontalAlignment="Right" Width="664">
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="169" Margin="341,27,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Background="{x:Null}"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="169" Margin="11,230,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Background="{x:Null}"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="169" Margin="11,27,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Background="{x:Null}"/>
+        <Button x:Name="viewpoint" Content="三维显示" HorizontalAlignment="Left" Margin="423,230,0,0" Grid.Row="1" VerticalAlignment="Top"  Click="ViewPoint_Click" RenderTransformOrigin="1.371,-1.75"  Width="60" Height="30"/>
+        <Button x:Name="caculate" Content="计算参数" Margin="503,230,0,0" Grid.Row="1" Width="60" Height="30" Click="Caculate_Click" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="2.443,0.36"/>
+        <Button x:Name="correct" Content="一键校准" Margin="341,230,0,381.6" Grid.Row="1"  RenderTransformOrigin="-0.757,-2.564" Width="60" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Correct_Click" />
+        <Button x:Name="waiting" Content="待定" HorizontalAlignment="Left" Margin="582,230,0,0" Grid.Row="1" VerticalAlignment="Top" Width="60" Height="30"  RenderTransformOrigin="-0.357,0.32" />
+
+        <Label  Content="体高：" HorizontalAlignment="Left" Margin="341,320,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#00000000" Foreground="#FF533290" FontSize="14"/>
+        <Label Content="体宽：" HorizontalAlignment="Left" Margin="500,282,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#00000000" Foreground="#FF533290" FontSize="14"/>
+        <Label Content="体长：" HorizontalAlignment="Left" Margin="341,282,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#00000000" Foreground="#FF533290" FontSize="14"/>
+        <Label  Content="腹围：" HorizontalAlignment="Left" Margin="500,320,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#00000000" Foreground="#FF533290" FontSize="14"/>
+        <Label  Content="胸围：" HorizontalAlignment="Left" Margin="341,358,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#00000000" Foreground="#FF533290" FontSize="14"/>
+        <Label  Content="臀围：" HorizontalAlignment="Left" Margin="499,358,0,0" Grid.Row="1" VerticalAlignment="Top" Background="#00000000" Foreground="#FF533290" FontSize="14"/>
+        <TextBox x:Name="bodyLength" HorizontalAlignment="Left" Height="23" Margin="392,288,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.555,0.726"/>
+        <TextBox Name="width" HorizontalAlignment="Left" Height="23" Margin="551,288,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="91"/>
+        <TextBox Name="height" HorizontalAlignment="Left" Height="23" Margin="392,326,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="91"/>
+        <TextBox Name="abdomen" HorizontalAlignment="Left" Height="23" Margin="551,327,0,0" Grid.Row="1" TextWrapping="Wrap"   VerticalAlignment="Top" Width="91"/>
+        <TextBox Name="chest" HorizontalAlignment="Left" Height="23" Margin="392,364,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="91"/>
+        <TextBox Name="buttocks" HorizontalAlignment="Left" Height="23" Margin="550,364,0,0" Grid.Row="1" TextWrapping="Wrap"   VerticalAlignment="Top" Width="91"/>
+
+        <Label Content="消息日志" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="#FF52318F" FontSize="14" Width="66" Foreground="#FF52318F" FontWeight="Bold" Margin="48,419,0,0" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Height="1" Margin="11,432,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Background="#FF533290" BorderBrush="#FF533290"/>
+        <TextBox HorizontalAlignment="Left" Height="1" Margin="117,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="525" Background="#FF533290" BorderBrush="#FF533290"/>
+        <TextBox  x:Name="txtmsg" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="{Binding test, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" BorderBrush="#FF8DA3AE" Margin="12,463,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="632" Height="147" VerticalAlignment="Top">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Return" Modifiers="Shift"/>
+                <KeyBinding Key="Return" Command="{Binding command}"/>
+            </TextBox.InputBindings>
+        </TextBox>
+        <Viewbox HorizontalAlignment="Center" Margin="12,27,352,446" Width="300">
+            <Image x:Name="imageLeft" Source="{Binding ImageSourceBasic}" Stretch="UniformToFill" Height="132" Width="234"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" Margin="341,27,23,446" Width="300">
+            <Image x:Name="imageRight" Source="{Binding ImageSourceLeft}" Stretch="UniformToFill" Height="132" Width="234"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" Margin="12,231,352,243" Width="300">
+            <Image x:Name="imageTop" Source="{Binding ImageSourceRight}" Stretch="UniformToFill" Height="132" Width="234"/>
+        </Viewbox>
+        <Label Content="IP地址：" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.75,-3.891" Margin="2,620,0,-3"/>
+        <Label Content="端口：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,646,0,-29" RenderTransformOrigin="0.49,-0.234"/>
+        <Label Content="主机名称：" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.59,-2.172" Margin="-11,701,0,-84"/>
+        <TextBox x:Name="ipAddTextbox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="120" Margin="47,620,0,-1" IsReadOnly="True"/>
+        <TextBox x:Name="portTextbox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="5000" VerticalAlignment="Top" Width="120" Margin="47,649,0,-30" IsReadOnly="True"/>
+        <Label x:Name="servername" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,701,0,-84" RenderTransformOrigin="0.5,1.76"/>
+        <Label Content="已连接的采集设备：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="252,620,0,-3" RenderTransformOrigin="6.23,1.016"/>
+        <Label x:Name="stateInfo" Content="0个连接" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="252,646,0,-29" Width="67" RenderTransformOrigin="4.086,0.672"/>
+        <ListBox x:Name="L_ClientList" HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="246" Margin="403,628,0,-59"/>
+        <Button x:Name="B_SendMessage" Content="发送确认采集命令" HorizontalAlignment="Left" VerticalAlignment="Top" Width="118" Margin="252,683,0,-60" Height="19" Click="B_SendMessage_Click"/>
+        <Label Content="视频端口：" HorizontalAlignment="Left" Height="27" Margin="-11,680,0,-65" VerticalAlignment="Top" RenderTransformOrigin="0.629,0.37"/>
+        <TextBox x:Name="portTB" HorizontalAlignment="Left" Height="23" Margin="48,680,0,-61" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="PortTB_TextChanged" Text="5001" IsEnabled="False"/>
+        <Button Content="清空" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="569,439,0,0" Click="ClearBtn_Click_1"/>
+        <Button x:Name="collectFaceBtn" Content="发送采集头部命令" HorizontalAlignment="Left" VerticalAlignment="Top" Width="118" Margin="341,396,0,0" Click="CollectFaceBtn_Click" Height="31"/>
+    </Grid>
+</Window>
